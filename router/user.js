@@ -1,6 +1,7 @@
 const express=require('express');
 const router=express.Router();
-const usercontroller=require("../controller/UserController")
+const usercontroller=require("../controller/UserController");
+const validate=require('../midill/validate')
 const User=require('../models/user');
 router.get('/show',(req,res,next)=>{
 res.send('bonjour asma');
@@ -116,6 +117,6 @@ res.send('bonjour asma');
   //       });
   //     });
 
-    router.post("/add",usercontroller.add);
+    router.post("/add",validate,usercontroller.add);
     router.put("/update/:id",usercontroller.update)
 module.exports=router;
